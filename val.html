@@ -8,6 +8,7 @@
     <script>
       var canvas = document.getElementById("can");
       var cn = canvas.getContext("2d");
+      
       var x, y, rad;
       var points = [];
       for(var t=0; t<360; t+=3) {
@@ -18,6 +19,10 @@
       }
       cn.strokeStyle = '#ff3333';
       cn.fillStyle = '#000';
+      
+      //cn.font = "italic 30pt Arial";
+      
+      
       cn.fillRect(0, 0, canvas.width, canvas.height);
       function draw(step, length) {
         var i, p1, p2;
@@ -35,8 +40,6 @@
         cn.fillRect(0, 0, canvas.width, canvas.height);
         
         // - - - - - - - - - -
-        //cn.fillStyle = "#00F";
-        //cn.strokeStyle = "#F00";
     
         var str1 = "С праздником,";
         var str2 = "любимая моя";
@@ -45,10 +48,15 @@
         cn.font = 'italic 30px cursive';
         
         cn.textAlign = "center";
-        //cn.fillText("center", 250, 10*length);
-        cn.strokeText(str1, 250, 190);
-        cn.strokeText(str2, 250, 225);
-        cn.strokeText(str3, 250, 260);
+        cn.textBaseline = "middle";
+        cn.strokeText(str1, 250, 200);
+        cn.strokeText(str2, 250, 240);
+        cn.strokeText(str3, 250, 280);
+        
+        cn.font = "italic 14pt Arial";
+        cn.textBaseline = "bottom";
+        cn.textAlign = "right";
+        cn.strokeText("14.02.2021", 500, 500);
         }
         
         if(length == 15){
