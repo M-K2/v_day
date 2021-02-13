@@ -4,13 +4,13 @@
     <title>С праздником)</title>
   </head>
   <body style="background-color: black">
-    <canvas id="can" width="500" height="500" style="margin:auto;display: block;">Ксюша, с днём святого Валентина</canvas>
+    <canvas id="can" width="500" height="500" style="margin:auto;display: block;">Настенька, с днём святого Валентина</canvas>
     <script>
       var canvas = document.getElementById("can");
       var cn = canvas.getContext("2d");
       var x, y, rad;
       var points = [];
-      for(var t=0; t<360; t+=5) {
+      for(var t=0; t<360; t+=3) {
         rad = t*Math.PI/180;
         x = (16 * Math.sin(rad)*Math.sin(rad)*Math.sin(rad)) * 15 + 250;
         y = -(13 * Math.cos(rad) - 5 * Math.cos(2*rad) - 2 * Math.cos(3*rad) - Math.cos(4*rad) ) * 15 + 220;
@@ -31,16 +31,32 @@
         if(step == points.length - 1 || (step+length) == points.length) {
         step = 0;
         length++;
-        cn.fillStyle = 'rgba(0,0,0,0.05)';
+        cn.fillStyle = 'rgba(0,0,0,0.2)';
         cn.fillRect(0, 0, canvas.width, canvas.height);
+        
+        // - - - - - - - - - -
+        //cn.fillStyle = "#00F";
+        //cn.strokeStyle = "#F00";
+    
+        var str1 = "С праздником,";
+        var str2 = "любимая моя";
+        var str3 = "Настенька";
+        
+        cn.font = 'italic 30px cursive';
+        
+        cn.textAlign = "center";
+        //cn.fillText("center", 250, 10*length);
+        cn.strokeText(str1, 250, 190);
+        cn.strokeText(str2, 250, 225);
+        cn.strokeText(str3, 250, 260);
         }
         
-        if(length == points.length)
+        if(length == 15){
         length = 1;
-        
+        }
         setTimeout(function(){
         draw(step+1, length);
-        }, 10);
+        }, 1);
       }
       draw(0, 1);
     </script>
